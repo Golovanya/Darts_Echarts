@@ -1,0 +1,13 @@
+header{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 100px  ;
+}
+
+.game{
+  margin-top: 100px;
+  display: grid;
+  grid-template-columns: repeat(2, 0.5fr);
+  grid-gap: 30px;
+}
