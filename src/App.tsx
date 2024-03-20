@@ -28,11 +28,11 @@ interface player {
 }
 
 
-
 function App() {
   const [mode, setMode] = useState("501");
   const [value, setValue] = useState("");
   const [players, setPlayers] =useState <player[]>([]);
+  const handleChange = (v) =>setValue(v)
 
   const handleAddPlayer = () => {
     const newPlayer = {
@@ -59,7 +59,7 @@ function App() {
         <FieldGroup form="round">
           <TextField
             placeholder="Добавьте игрока"
-            onChange={(val:string | TextFieldPropOnChange)=>setValue(val)}
+            onChange={handleChange}
             value={value}
           />
           <Button label="Добавить" onClick={handleAddPlayer} />
