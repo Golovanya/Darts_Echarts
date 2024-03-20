@@ -22,7 +22,7 @@ import "./App.css";
 import { Card } from "@consta/uikit/Card";
 
 interface player {
-  name:string,
+  name:string | null
   id:number,
   rate:number
 }
@@ -30,9 +30,10 @@ interface player {
 
 function App() {
   const [mode, setMode] = useState("501");
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState<string | null>(null);
   const [players, setPlayers] =useState <player[]>([]);
-  const handleChange = (v) =>setValue(v)
+
+  const handleChange = (v:string | null) =>setValue(v)
 
   const handleAddPlayer = () => {
     const newPlayer = {

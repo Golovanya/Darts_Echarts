@@ -7,7 +7,7 @@ import { Card } from "@consta/uikit/Card";
 
 interface EChartsGaugePrips {
   player: {
-    name:string,
+    name:string | null,
     id:number,
     rate:number
   },
