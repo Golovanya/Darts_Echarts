@@ -51,7 +51,6 @@ function App() {
       <header>
         <ChipsChoice
           items={items}
-          getItemLabel={(item) => item}
           onChange={(v) => setMode(v.label)}
           size="m"
         />
@@ -60,7 +59,7 @@ function App() {
         <FieldGroup form="round">
           <TextField
             placeholder="Добавьте игрока"
-            onChange={setValue}
+            onChange={(val:string | TextFieldPropOnChange)=>setValue(val)}
             value={value}
           />
           <Button label="Добавить" onClick={handleAddPlayer} />
