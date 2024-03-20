@@ -31,7 +31,7 @@ function App() {
   const [value, setValue] = useState<string | null>(null);
   const [players, setPlayers] = useState<player[]>([]);
   const valueLabel = items.filter((i) => i.label === mode);
-  console.log(valueLabel);
+
 
   const handleChange = (v: string | null) => setValue(v);
 
