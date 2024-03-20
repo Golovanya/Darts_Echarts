@@ -4,21 +4,20 @@ import { TextField } from "@consta/uikit/TextField";
 import { useState } from "react";
 import { Card } from "@consta/uikit/Card";
 
-
 interface EChartsGaugePrips {
   player: {
-    name:string | null,
-    id:number,
-    rate:number
-  },
-  mode: string
+    name: string | null;
+    id: number;
+    rate: number;
+  };
+  mode: string;
 }
 
-const EChartsGauge:React.FC<EChartsGaugePrips> = ({ player, mode }) => {
+const EChartsGauge: React.FC<EChartsGaugePrips> = ({ player, mode }) => {
   const chartRef = useRef(null);
   let myChart = null;
 
-  const [additionalRate, setAdditionalRate] = useState(0); 
+  const [additionalRate, setAdditionalRate] = useState(0);
 
   useEffect(() => {
     myChart = echarts.init(chartRef.current);
@@ -42,7 +41,7 @@ const EChartsGauge:React.FC<EChartsGaugePrips> = ({ player, mode }) => {
           splitLine: {
             length: 1,
           },
-          max: mode, 
+          max: mode,
           name: "Pressure",
           type: "gauge",
           progress: {

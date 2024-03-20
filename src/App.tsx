@@ -1,10 +1,12 @@
-import { Theme, presetGpnDefault } from '@consta/uikit/Theme';
+import { Theme, presetGpnDefault } from "@consta/uikit/Theme";
 import { useState } from "react";
 import { ChipsChoice } from "@consta/uikit/Chips";
 import { FieldGroup } from "@consta/uikit/FieldGroup";
 import { Button } from "@consta/uikit/Button";
 import { TextField } from "@consta/uikit/TextField";
 import EChartsGauge from "./EChartsGauge";
+import "./App.css";
+import { Card } from "@consta/uikit/Card";
 
 const items = [
   {
@@ -18,22 +20,20 @@ const items = [
   },
 ];
 
-import "./App.css";
-import { Card } from "@consta/uikit/Card";
-
 interface player {
-  name:string | null
-  id:number,
-  rate:number
+  name: string | null;
+  id: number;
+  rate: number;
 }
-
 
 function App() {
   const [mode, setMode] = useState("501");
   const [value, setValue] = useState<string | null>(null);
-  const [players, setPlayers] =useState <player[]>([]);
+  const [players, setPlayers] = useState<player[]>([]);
+  const valueLabel = items.filter((i) => i.label === mode);
+  console.log(valueLabel);
 
-  const handleChange = (v:string | null) =>setValue(v)
+  const handleChange = (v: string | null) => setValue(v);
 
   const handleAddPlayer = () => {
     const newPlayer = {
@@ -42,9 +42,8 @@ function App() {
       rate: 0,
     };
 
-    
     setPlayers([...players, newPlayer]);
-    setValue(""); 
+    setValue("");
   };
 
   return (
@@ -54,6 +53,7 @@ function App() {
           items={items}
           onChange={(v) => setMode(v.label)}
           size="m"
+          value={valueLabel[0]}
         />
 
         <h1>Играем до {mode}</h1>
@@ -70,7 +70,10 @@ function App() {
       {players.length === 0 ? (
         <Card verticalSpace="4xl" horizontalSpace="4xl" status={"alert"}>
           <h1>Вас приветствует дартс!</h1>
-          <p>Для начала игры выберите с какого числа будете сгонять сумму и добавьте игроков</p>
+          <p>
+            Для начала игры выберите с какого числа будете сгонять сумму и
+            добавьте игроков
+          </p>
         </Card>
       ) : (
         <div className="game">
